@@ -6,9 +6,16 @@ from telegram import (
     KeyboardButtonRequestUsers,
 )
 
+import os
+
 
 def build_user_keyboard():
-    keyboard = []
+    keyboard = [
+        [
+            InlineKeyboardButton(text="Purchase", callback_data="purchase"),
+            InlineKeyboardButton(text="Support", url=os.getenv("SUPPORT_URL")),
+        ]
+    ]
     return InlineKeyboardMarkup(keyboard)
 
 
@@ -43,7 +50,7 @@ def build_admin_keyboard():
 
 
 def build_back_button(data: str):
-    return [InlineKeyboardButton(text="الرجوع🔙", callback_data=data)]
+    return [InlineKeyboardButton(text="Back 🔙", callback_data=data)]
 
 
 def build_request_buttons():

@@ -11,13 +11,14 @@ async def check_if_user_member(update: Update, context: ContextTypes.DEFAULT_TYP
     )
     if chat_member.status == ChatMemberStatus.LEFT:
         text = (
-            f"لبدء استخدام البوت يجب عليك الانضمام الى قناة البوت أولاً.\n\n"
-            "✅ اشترك أولاً 👇.\n"
-            f"🔗 {os.getenv('CHANNEL_LINK')}\n\n"
-            "ثم اضغط تحقق✅"
+            f"You have to join the channel before using the bot :)\n"
+            "Then Press Verify ✅"
         )
-        markup = InlineKeyboardMarkup.from_button(
-            InlineKeyboardButton(text="تحقق✅", callback_data="check joined")
+        markup = InlineKeyboardMarkup.from_column(
+            [
+                InlineKeyboardButton(text="Join Here", url=os.getenv("CHANNEL_LINK")),
+                InlineKeyboardButton(text="Verify ✅", callback_data="check joined"),
+            ]
         )
         if update.callback_query:
             await update.callback_query.edit_message_text(
@@ -35,12 +36,13 @@ async def check_joined(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     if chat_memeber.status == ChatMemberStatus.LEFT:
         await update.callback_query.answer(
-            text="قم بالاشتراك بالقناة أولاً", show_alert=True
+            text=f"You have to join the channel before using the bot :)",
+            show_alert=True,
         )
         return
 
     await update.callback_query.edit_message_text(
-        text="أهلاً بك...",
+        text="Welcome...",
         reply_markup=build_user_keyboard(),
     )
 

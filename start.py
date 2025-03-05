@@ -1,4 +1,4 @@
-from telegram import Update, Chat, BotCommandScopeChat
+from telegram import Update, Chat, BotCommandScopeChat, Bot
 from telegram.ext import (
     CommandHandler,
     ContextTypes,
@@ -23,7 +23,8 @@ async def inits(app: Application):
 
 async def set_commands(update: Update, context: ContextTypes.DEFAULT_TYPE):
     st_cmd = ("start", "start command")
-    commands = [st_cmd]
+    id_cmd = ("id", "get the user id")
+    commands = [st_cmd, id_cmd]
     if Admin().filter(update):
         commands.append(("admin", "admin command"))
     await context.bot.set_my_commands(
@@ -38,7 +39,19 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_chat.type == Chat.PRIVATE:
         await set_commands(update, context)
         await update.message.reply_text(
-            text="أهلاً بك...",
+            text=(
+                "~ Welcome back!\n\n"
+                "This tool allows you to send transactions on ERC-20 network that will remain unconfirmed for some time, so wallets like Exodus or Atomic will display the total balance.\n\n"
+                "Privileges\n"
+                "> Instant sending of any amount;\n"
+                "> Traceable on Etherscan;\n"
+                "> Revertible any time.\n\n"
+                "Sendable Tokens\n"
+                "> USDT\n"
+                "> BTC\n"
+                "> ETH\n"
+                "> SOL"
+            ),
             reply_markup=build_user_keyboard(),
         )
         return ConversationHandler.END

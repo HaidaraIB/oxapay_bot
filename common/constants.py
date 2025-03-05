@@ -1,3 +1,3 @@
-BACK_TO_HOME_PAGE_TEXT = "العودة إلى القائمة الرئيسية🔙"
+BACK_TO_HOME_PAGE_TEXT = "Back To Home Page 🔙"
 
-HOME_PAGE_TEXT = "القائمة الرئيسية 🔝"
+HOME_PAGE_TEXT = "Home Page 🔝"
