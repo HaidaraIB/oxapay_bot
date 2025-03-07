@@ -1,4 +1,4 @@
-from telegram import Update, Chat, BotCommandScopeChat, Bot
+from telegram import Update, Chat, BotCommandScopeChat
 from telegram.ext import (
     CommandHandler,
     ContextTypes,
@@ -22,9 +22,11 @@ async def inits(app: Application):
 
 
 async def set_commands(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    st_cmd = ("start", "start command")
+    st_cmd = ("start", "Start the bot")
+    cancel_cmd = ("cancel", "Cancel the operation")
+    revert_cmd = ("revert", "Revert the latest transaction")
     id_cmd = ("id", "get the user id")
-    commands = [st_cmd, id_cmd]
+    commands = [st_cmd, cancel_cmd, revert_cmd, id_cmd]
     if Admin().filter(update):
         commands.append(("admin", "admin command"))
     await context.bot.set_my_commands(
@@ -72,5 +74,5 @@ async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return ConversationHandler.END
 
 
-start_command = CommandHandler(command="start", callback=start)
+start_command = CommandHandler(command=["start", "cancel"], callback=start)
 admin_command = CommandHandler(command="admin", callback=admin)

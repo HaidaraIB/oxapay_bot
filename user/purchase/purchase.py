@@ -55,11 +55,14 @@ async def choose_currency(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "Send the coins to the following address:\n"
                 f"<code>{Currencies.get_currency(update.callback_query.data).value['address']}</code>"
             ),
-            reply_markup=InlineKeyboardMarkup.from_button(
-                InlineKeyboardButton(
-                    text="Contact After Payment",
-                    url=os.getenv("SUPPORT_URL"),
-                )
+            reply_markup=InlineKeyboardMarkup.from_column(
+                [
+                    InlineKeyboardButton(
+                        text="Contact After Payment",
+                        url=os.getenv("SUPPORT_URL"),
+                    ),
+                    back_to_user_home_page_button[0][0],
+                ]
             ),
         )
         return ConversationHandler.END
@@ -88,4 +91,6 @@ purchase_handler = ConversationHandler(
         start_command,
         back_to_user_home_page_handler,
     ],
+    name="purchase_conversation",
+    persistent=True,
 )

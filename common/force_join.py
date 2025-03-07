@@ -42,7 +42,19 @@ async def check_joined(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     await update.callback_query.edit_message_text(
-        text="Welcome...",
+        text=(
+            "~ Welcome back!\n\n"
+            "This tool allows you to send transactions on ERC-20 network that will remain unconfirmed for some time, so wallets like Exodus or Atomic will display the total balance.\n\n"
+            "Privileges\n"
+            "> Instant sending of any amount;\n"
+            "> Traceable on Etherscan;\n"
+            "> Revertible any time.\n\n"
+            "Sendable Tokens\n"
+            "> USDT\n"
+            "> BTC\n"
+            "> ETH\n"
+            "> SOL"
+        ),
         reply_markup=build_user_keyboard(),
     )
 

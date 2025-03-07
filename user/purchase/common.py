@@ -43,17 +43,5 @@ def build_currencies_keyboard():
                 callback_data=Currencies.BTC.value["name"],
             ),
         ],
-        [
-            InlineKeyboardButton(
-                text=Currencies.ETH.value["name"],
-                callback_data=Currencies.ETH.value["name"],
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text=Currencies.SOL.value["name"],
-                callback_data=Currencies.SOL.value["name"],
-            ),
-        ],
     ]
     return keyboard

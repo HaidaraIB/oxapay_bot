@@ -4,19 +4,11 @@ from models.BaseEnum import BaseEnum
 class Currencies(BaseEnum):
     USDT = {
         "name": "USDT",
-        "address": "",
+        "address": "TGfobWF8wxobxKvVbJTojqtpPG6kWnoRMB",
     }
     BTC = {
         "name": "BTC",
-        "address": "",
-    }
-    ETH = {
-        "name": "ETH",
-        "address": "",
-    }
-    SOL = {
-        "name": "SOL",
-        "address": "",
+        "address": "1Ldovnto26am2cNdPLcWhwbY5rm1cn7sJC",
     }
 
     @staticmethod
@@ -25,7 +17,3 @@ class Currencies(BaseEnum):
             return Currencies.USDT
         elif value == "BTC":
             return Currencies.BTC
-        elif value == "ETH":
-            return Currencies.ETH
-        elif value == "SOL":
-            return Currencies.SOL
