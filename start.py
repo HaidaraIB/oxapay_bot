@@ -50,9 +50,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 "> Revertible any time.\n\n"
                 "Sendable Tokens\n"
                 "> USDT\n"
-                "> BTC\n"
-                "> ETH\n"
-                "> SOL"
+                "> USDC\n"
+                "> DAI\n"
+                "> Wrapped BTC\n"
+                "> Fantom\n"
+                "> SHIBA INU\n"
+                "> ChainLink\n"
+                "> Pepe\n"
+                "> Cronos\n"
+                "> Uniswap\n"
             ),
             reply_markup=build_user_keyboard(),
         )

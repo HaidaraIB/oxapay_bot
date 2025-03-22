@@ -7,22 +7,22 @@ def build_plans_keyboard():
     keyboard = [
         [
             InlineKeyboardButton(
-                text=Plans.Daily.value,
-                callback_data=Plans.Daily.value,
+                text=Plans.Daily.value['text'],
+                callback_data=Plans.Daily.value['text'],
             ),
             InlineKeyboardButton(
-                text=Plans.Weekly.value,
-                callback_data=Plans.Weekly.value,
+                text=Plans.Weekly.value['text'],
+                callback_data=Plans.Weekly.value['text'],
             ),
         ],
         [
             InlineKeyboardButton(
-                text=Plans.Monthly.value,
-                callback_data=Plans.Monthly.value,
+                text=Plans.Monthly.value['text'],
+                callback_data=Plans.Monthly.value['text'],
             ),
             InlineKeyboardButton(
-                text=Plans.Lifetime.value,
-                callback_data=Plans.Lifetime.value,
+                text=Plans.Lifetime.value['text'],
+                callback_data=Plans.Lifetime.value['text'],
             ),
         ],
     ]
